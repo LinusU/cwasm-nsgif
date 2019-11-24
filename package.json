@@ -1,0 +1,24 @@
+{
+  "name": "@cwasm/nsgif",
+  "version": "0.0.0",
+  "repository": "LinusU/cwasm-nsgif",
+  "license": "MIT",
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "nsgif.wasm"
+  ],
+  "scripts": {
+    "prepare": "make nsgif.wasm",
+    "test": "make test"
+  },
+  "dependencies": {
+    "@canvas/image-data": "^1.0.0"
+  },
+  "devDependencies": {
+    "lodepng": "^2.0.0",
+    "mocha": "^6.2.2",
+    "standard": "^14.3.1",
+    "ts-readme-generator": "^0.2.0"
+  }
+}
