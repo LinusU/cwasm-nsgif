@@ -24,9 +24,9 @@ RUN git clone git://git.netsurf-browser.org/libnsgif.git && cd libnsgif && git c
 ADD decode.c .
 
 # Relase build
-RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsgif/include/ -Oz     -o libnsgif.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_gif,--strip-all -- decode.c libnsgif/src/libnsgif.c libnsgif/src/lzw.c
+RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsgif/include/ -flto -Oz     -o libnsgif.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_gif,--strip-all -- decode.c libnsgif/src/libnsgif.c libnsgif/src/lzw.c
 
 # Debug build
-# RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsgif/include/ -O0 -g3 -o libnsgif.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_gif,             -- decode.c libnsgif/src/libnsgif.c libnsgif/src/lzw.c
+# RUN clang --sysroot=/share/wasi-sysroot --target=wasm32-unknown-wasi -Ilibnsgif/include/ -flto -O0 -g3 -o libnsgif.wasm -nostartfiles -fvisibility=hidden -Wl,--no-entry,--demangle,--export=malloc,--export=free,--export=decode_gif,             -- decode.c libnsgif/src/libnsgif.c libnsgif/src/lzw.c
 
 CMD base64 --wrap=0 libnsgif.wasm
