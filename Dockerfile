@@ -8,11 +8,11 @@ RUN \
   apt-get update && \
   apt-get install -y ca-certificates curl git
 
-########################
-# Install WASI SDK 8.0 #
-########################
+#########################
+# Install WASI SDK 10.0 #
+#########################
 
-RUN curl -L https://github.com/CraneStation/wasi-sdk/releases/download/wasi-sdk-8/wasi-sdk-8.0-linux.tar.gz | tar xz --strip-components=1 -C /
+RUN curl -L https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-10/wasi-sdk-10.0-linux.tar.gz | tar xz --strip-components=1 -C /
 
 ###########################
 # Install binaryen 1.39.1 #
